@@ -10,6 +10,8 @@ using BusinessObject;
 using System.Data;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Org.BouncyCastle.Asn1.Mozilla;
+using System.Configuration;
 
 namespace BusinessLogic
 {
@@ -138,6 +140,44 @@ namespace BusinessLogic
         }
 
 
+            private string connectionString = ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;// Replace with your actual connection string
+
+            public List<Recipe> FetchRecipesFromDatabase()
+            {
+                List<Recipe> recipes = new List<Recipe>();
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT * FROM recipes"; // Replace with your actual table name
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Recipe recipe = new Recipe
+                                {
+                                    RecipeID = Convert.ToInt32(reader["RecipeID"]),
+                                    UserID = Convert.ToInt32(reader["UserID"]),
+                                    RecipeName = reader["RecipeName"].ToString(),
+                                    Ingredients = reader["Ingredients"].ToString(),
+                                    CookingTime = Convert.ToInt32(reader["CookingTime"]),
+                                    Servings = Convert.ToInt32(reader["Servings"])
+                                };
+
+                                recipes.Add(recipe);
+                            }
+                        }
+                    }
+                }
+
+                return recipes;
+            }
+        }
+
 
     }
-}
+
+

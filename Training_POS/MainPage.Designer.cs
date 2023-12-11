@@ -28,23 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowLayoutPanelRecipes = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanelRecipes
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(41, 85);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(730, 341);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanelRecipes.Location = new System.Drawing.Point(19, 85);
+            this.flowLayoutPanelRecipes.Name = "flowLayoutPanelRecipes";
+            this.flowLayoutPanelRecipes.Size = new System.Drawing.Size(1360, 346);
+            this.flowLayoutPanelRecipes.TabIndex = 0;
             // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 450);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.AutoScroll = true;
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1385, 450);
+            this.Controls.Add(this.flowLayoutPanelRecipes);
             this.Name = "MainPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
             this.ResumeLayout(false);
 
@@ -52,6 +55,6 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRecipes;
     }
 }

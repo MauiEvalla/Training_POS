@@ -96,8 +96,10 @@ namespace Training_POS
 
         private void materialButton2_Click(object sender, EventArgs e)
         {
-            Registration registrationPage = new Registration();
-            registrationPage.Show();
+            MainPage mainPage = new MainPage();
+            mainPage.Show();
+           // Registration registrationPage = new Registration();
+            //registrationPage.Show();
             this.Hide();
         }
     }
