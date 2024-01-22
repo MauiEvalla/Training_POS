@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace Training_POS
             labelCookingTime.Text = $"Cooking Time: {recipe.CookingTime} mins";
             labelIngredients.Text = $"Ingredients: {recipe.Ingredients}";
             labelServings.Text = $"Servings: {recipe.Servings}";
-            labelUserID.Text = $"Made by user: {recipe.UserID}";
+            
             // Add more controls as needed
 
             // Adjust text formatting as needed
@@ -48,6 +49,22 @@ namespace Training_POS
 
             // Enable text wrapping if needed
             labelIngredients.TextAlign = ContentAlignment.TopLeft;
+
+            byte[] imageBytes = recipe.RecipeImage; // Call a method to retrieve the byte array from the database
+            if (imageBytes != null)
+            {
+                Image image = ByteArrayToImage(imageBytes);
+                imgFood.Image = image;
+            }
+        }
+
+        private Image ByteArrayToImage(byte[] byteArray)
+        {
+            using (MemoryStream ms = new MemoryStream(byteArray))
+            {
+                Image image = Image.FromStream(ms);
+                return image;
+            }
         }
     }
 }

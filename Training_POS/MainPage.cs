@@ -39,6 +39,13 @@ namespace Training_POS
                 recipeCard.Margin = new Padding(10);
                 flowLayoutPanelRecipes.Controls.Add(recipeCard);
             }
-        }                                                                                                                                                                                                       
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            AddRecipeForm recipe =  new AddRecipeForm();
+            this.Hide();
+            recipe.Show();
+        }
     }
 }
