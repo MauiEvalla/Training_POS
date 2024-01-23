@@ -14,5 +14,43 @@ namespace BusinessObject
         public string Ingredients { get; set; }
         public int CookingTime { get; set; }
         public int Servings { get; set; }
+
+        public byte[] RecipeImage { get; set; }
+
+        public Recipe()
+        {
+
+
+        }
+        public Recipe(int RecipeID, string recipeName, string ingredients, int cookingTime, int servings)
+        {
+            RecipeName = recipeName;
+            Ingredients = ingredients;
+            CookingTime = cookingTime;
+            Servings = servings;
+
+        }
+
+        public Recipe(string recipeName, string ingredients, int cookingTime, int servings,byte[] recipeImage )
+        {
+            RecipeName = recipeName;
+            Ingredients = ingredients;
+            CookingTime = cookingTime;
+            Servings = servings;
+            RecipeImage = recipeImage;
+
+        }
+
+        public Recipe(int recipeID, string recipeName, string ingredients, int cookingTime, int servings, byte[] recipeImage)
+        {
+            RecipeID = recipeID; 
+            RecipeName = recipeName;
+            Ingredients = ingredients;
+            CookingTime = cookingTime;
+            Servings = servings;
+            RecipeImage = recipeImage;
+
+        }
     }
+
 }

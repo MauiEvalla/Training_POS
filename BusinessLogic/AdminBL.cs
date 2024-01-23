@@ -155,27 +155,41 @@ namespace BusinessLogic
                     {
                         using (MySqlDataReader reader = command.ExecuteReader())
                         {
-                            while (reader.Read())
+                        while (reader.Read())
+                        {
+                            Recipe recipe = new Recipe
                             {
-                                Recipe recipe = new Recipe
-                                {
-                                    RecipeID = Convert.ToInt32(reader["RecipeID"]),
-                                    UserID = Convert.ToInt32(reader["UserID"]),
-                                    RecipeName = reader["RecipeName"].ToString(),
-                                    Ingredients = reader["Ingredients"].ToString(),
-                                    CookingTime = Convert.ToInt32(reader["CookingTime"]),
-                                    Servings = Convert.ToInt32(reader["Servings"])
-                                };
+                                RecipeID = Convert.ToInt32(reader["RecipeID"]),
+                                RecipeName = reader["RecipeName"].ToString(),
+                                Ingredients = reader["Ingredients"].ToString(),
+                                CookingTime = Convert.ToInt32(reader["CookingTime"]),
+                                Servings = Convert.ToInt32(reader["Servings"]),
+                                RecipeImage = reader["image"] as byte[]
+                            };
 
-                                recipes.Add(recipe);
-                            }
+                            recipes.Add(recipe);
                         }
+                    }
                     }
                 }
 
                 return recipes;
             }
+
+        public int InsertRecipe(Recipe recipe)
+        {
+            AdminDA adminDA = new AdminDA();
+            try
+            {
+                adminDA.InsertRecipe(recipe);
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+    }
 
 
     }

@@ -15,6 +15,10 @@ namespace BusinessObject
         public string Phone { get; set; }
         public string Email { get; set; }
 
+        public Employee()
+        {
+
+        }
         public Employee(int id, string userName, string password, string phone, string email)
         {
             Id = id;

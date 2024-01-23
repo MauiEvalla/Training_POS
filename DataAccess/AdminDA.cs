@@ -140,6 +140,28 @@ namespace DataAccess
             }
         }
 
+        public MySqlDataReader InsertRecipe(Recipe recipe)
+        {
+            try
+            {
+                MySqlParameter[] myparams = new MySqlParameter[] //We set the parameters if meron man, basically 1 variable has 2 parameters.
+                {
+                    new MySqlParameter("p_RecipeName", recipe.RecipeName),
+                    new MySqlParameter("p_Ingredients", recipe.Ingredients),
+                    new MySqlParameter("p_CookingTime", recipe.CookingTime),
+                    new MySqlParameter("p_Servings", recipe.Servings),
+                    new MySqlParameter("p_image",recipe.RecipeImage)
+                };
+                //Storage procedure           , Command Type               , parameters
+                return DBHelper.ExecuteParameterizedReader("InsertRecipe", CommandType.StoredProcedure, myparams);
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
 
 
 
